@@ -70,6 +70,7 @@ public class AIChatApp extends MIDlet implements CommandListener {
 
   private Command sendCommand;
   private Command backToSplashCommand;
+  //private Command showLogCommand;
   private Command backCommand;
 
   private Form splashScreen;
@@ -87,17 +88,16 @@ public class AIChatApp extends MIDlet implements CommandListener {
   private StringItem logHistoryStringItem;
 
   private Image appIcon;
-  
-  // Listen need Base64 link not the normal one
-  private static final String ENCODED_GLYPE_PROXY_BASE_URL = " ";
 
-  private static final String ENCODED_PRIMARY_API_URL_TEMPLATE = " ";
+  private static final String ENCODED_GLYPE_PROXY_BASE_URL = "aHR0cDovL3d3dy5zYW1vbnJ5ZS5jb20vcHJva3ppL2luZGV4LnBocD9xPQ==";
 
-  private static final String ENCODED_SECONDARY_API_URL_TEMPLATE = " ";
+  private static final String ENCODED_PRIMARY_API_URL_TEMPLATE = "aHR0cHM6Ly9hcGkucnl6dW1pLnZpcC9hcGkvYWkvY2hhdGdwdD90ZXh0PQ==";
 
-  private static final String ENCODED_RAPI_DOMAIN = " ";
+  private static final String ENCODED_SECONDARY_API_URL_TEMPLATE = "aHR0cHM6Ly9hcGkucnl6dW1pLnZpcC9hcGkvYWkvdjIvY2hhdGdwdD90ZXh0PQ==";
 
-  private static final String ENCODED_PROXY_DOMAIN = " ";
+  private static final String ENCODED_RAPI_DOMAIN = "YXBpLnJ5enVtaS52aXA=";
+
+  private static final String ENCODED_RATEAVON_DOMAIN = "d3d3LnNhbW9ucnllLmNvbQ==";
 
   private String glypeProxyBaseUrl;
 
@@ -121,7 +121,7 @@ public class AIChatApp extends MIDlet implements CommandListener {
       this.primaryApiUrlTemplate = decodeEncrypt(ENCODED_PRIMARY_API_URL_TEMPLATE);
       this.secondaryApiUrlTemplate = decodeEncrypt(ENCODED_SECONDARY_API_URL_TEMPLATE);
       this.hiddenApiDomain = decodeEncrypt(ENCODED_RAPI_DOMAIN);
-      this.hiddenRateavonDomain = decodeEncrypt(ENCODED_PROXY_DOMAIN);
+      this.hiddenRateavonDomain = decodeEncrypt(ENCODED_RATEAVON_DOMAIN);
       log("URLs decoded.");
       log("Pri. API tmpl: " + replaceAll(this.primaryApiUrlTemplate, this.hiddenApiDomain, "url"));
       log("Sec. API tmpl: " + replaceAll(this.secondaryApiUrlTemplate, this.hiddenApiDomain, "url"));
@@ -170,10 +170,12 @@ public class AIChatApp extends MIDlet implements CommandListener {
     this.messageInput = new TextField("Message:", "", 256, 0);
     this.sendCommand = new Command("Send", Command.OK, 1);
     this.backToSplashCommand = new Command("Back", Command.BACK, 2);
+    //this.showLogCommand = new Command("Show Log", Command.SCREEN, 3);
     this.chatForm.append((Item)this.chatHistory);
     this.chatForm.append((Item)this.messageInput);
     this.chatForm.addCommand(this.sendCommand);
     this.chatForm.addCommand(this.backToSplashCommand);
+    //this.chatForm.addCommand(this.showLogCommand);
     this.chatForm.setCommandListener(this);
     log("Chat form init.");
     this.logForm = new Form("App Logs");
