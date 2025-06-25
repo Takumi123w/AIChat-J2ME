@@ -1,6 +1,0 @@
-MIDlet-1: Midlet, ,AIChatApp
-MIDlet-Vendor: Vendor
-MIDlet-Version: 1.0
-MIDlet-Name: AIChat
-MicroEdition-Configuration: CLDC-1.0
-MicroEdition-Profile: MIDP-2.0
